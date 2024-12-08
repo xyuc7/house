@@ -2,6 +2,9 @@ using house.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+
+
+
 namespace house.Controllers
 {
     public class HomeController : Controller
