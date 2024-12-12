@@ -1,3 +1,5 @@
+using Infrastructure;
+
 namespace house
 {
     public class Program
@@ -8,6 +10,9 @@ namespace house
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddInfrastructureService(builder.Configuration);
+
 
             var app = builder.Build();
 
