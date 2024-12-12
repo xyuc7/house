@@ -1,4 +1,8 @@
+using house.Interfaces;
+using house.Services.Home;
 using Infrastructure;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace house
 {
@@ -11,7 +15,12 @@ namespace house
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            //1.取得組態中資料庫連線設定
+            string? connectionString = builder.Configuration.GetConnectionString("NorthwindContext");
+            //2.註冊EF Core的DbContext
+            builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(connectionString));
             builder.Services.AddInfrastructureService(builder.Configuration);
+            builder.Services.AddScoped(typeof(IProductServices), typeof(ProductServices));
 
 
             var app = builder.Build();

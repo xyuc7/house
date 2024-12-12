@@ -1,3 +1,4 @@
+using house.Interfaces;
 using house.Models;
 using house.Services.Home;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +12,12 @@ namespace house.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ProductServices _productServices;
+        private readonly IProductServices _productServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductServices productServices)
         {
             _logger = logger;
+            _productServices = productServices;
         }
 
         public IActionResult Index()
@@ -36,7 +38,7 @@ namespace house.Controllers
 
         public async Task<IActionResult> Products()
         {
-            var productdata = await _productServices.GetProductVMAsync();
+            var productdata = await _productServices.GetAllProductAsync();
 
             return View(productdata);
 

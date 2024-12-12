@@ -14,7 +14,7 @@ namespace Infrastructure.Data
         protected readonly NorthwindContext _dbContext;
         protected readonly DbSet<TEntity> _dbSet;
 
-        public EfRepository(NorthwindContext dbContext)
+        public EfRepository(NorthwindContext dbContext, DbSet<TEntity> dbSet)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();

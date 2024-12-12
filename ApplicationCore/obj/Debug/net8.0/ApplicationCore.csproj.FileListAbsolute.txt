@@ -10,3 +10,15 @@ C:\Users\u7\source\repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.
 C:\Users\u7\source\repos\house\ApplicationCore\obj\Debug\net8.0\refint\ApplicationCore.dll
 C:\Users\u7\source\repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.pdb
 C:\Users\u7\source\repos\house\ApplicationCore\obj\Debug\net8.0\ref\ApplicationCore.dll
+C:\Users\a4460\Source\Repos\house\ApplicationCore\bin\Debug\net8.0\ApplicationCore.deps.json
+C:\Users\a4460\Source\Repos\house\ApplicationCore\bin\Debug\net8.0\ApplicationCore.dll
+C:\Users\a4460\Source\Repos\house\ApplicationCore\bin\Debug\net8.0\ApplicationCore.pdb
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.sourcelink.json
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.dll
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\refint\ApplicationCore.dll
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ApplicationCore.pdb
+C:\Users\a4460\Source\Repos\house\ApplicationCore\obj\Debug\net8.0\ref\ApplicationCore.dll
