@@ -1,0 +1,40 @@
+﻿@model house.ViewModels.Home.ProductVM
+@{
+
+}
+<div class="container mt-4">
+    <h1 class="text-center">Products Table</h1>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>SupplierID</th>
+                <th>CategoryID</th>
+                <th>QuantityPerUnit</th>
+                <th>UnitPrice</th>
+                <th>UnitsInStock</th>
+                <th>UnitsOnOrder</th>
+                @* <th>ReorderLevel</th>
+                <th>Discontinued</th> *@
+            </tr>
+        </thead>
+@*         @foreach (var item in Model)
+ *@        {
+        <tbody>
+            <tr>
+                <td></td>
+                <td>@Model.ProductID</td>
+                <td>@Model.ProductName</td>
+                <td>@Model.SupplierID</td>
+                <td>@Model.CategoryID</td>
+                <td>@Model.QuantityPerUnit</td>
+                <td>@Model.UnitPrice</td>
+                <td>@Model.UnitsInStock</td>
+                <td>@Model.UnitsOnOrder</td>
+               
+            </tr>          
+        </tbody>
+        }
+    </table>
+</div>
