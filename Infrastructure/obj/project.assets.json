@@ -11,19 +11,6 @@
         "runtime": {
           "bin/placeholder/ApplicationCore.dll": {}
         }
-      },
-      "Infrastructure/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "ApplicationCore": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Infrastructure.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Infrastructure.dll": {}
-        }
       }
     }
   },
@@ -32,17 +19,11 @@
       "type": "project",
       "path": "../ApplicationCore/ApplicationCore.csproj",
       "msbuildProject": "../ApplicationCore/ApplicationCore.csproj"
-    },
-    "Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../Infrastructure/Infrastructure.csproj",
-      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "ApplicationCore >= 1.0.0",
-      "Infrastructure >= 1.0.0"
+      "ApplicationCore >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -51,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\u7\\source\\repos\\house\\house\\house.csproj",
-      "projectName": "house",
-      "projectPath": "C:\\Users\\u7\\source\\repos\\house\\house\\house.csproj",
+      "projectUniqueName": "C:\\Users\\u7\\source\\repos\\house\\Infrastructure\\Infrastructure.csproj",
+      "projectName": "Infrastructure",
+      "projectPath": "C:\\Users\\u7\\source\\repos\\house\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\u7\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\u7\\source\\repos\\house\\house\\obj\\",
+      "outputPath": "C:\\Users\\u7\\source\\repos\\house\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\u7\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -74,9 +55,6 @@
           "projectReferences": {
             "C:\\Users\\u7\\source\\repos\\house\\ApplicationCore\\ApplicationCore.csproj": {
               "projectPath": "C:\\Users\\u7\\source\\repos\\house\\ApplicationCore\\ApplicationCore.csproj"
-            },
-            "C:\\Users\\u7\\source\\repos\\house\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\u7\\source\\repos\\house\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -107,9 +85,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
