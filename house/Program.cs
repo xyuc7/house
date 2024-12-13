@@ -12,11 +12,13 @@ namespace house
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             //1.取得組態中資料庫連線設定
             string? connectionString = builder.Configuration.GetConnectionString("NorthwindContext");
+
             //2.註冊EF Core的DbContext
             builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(connectionString));
             builder.Services.AddInfrastructureService(builder.Configuration);
