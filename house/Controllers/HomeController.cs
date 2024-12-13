@@ -38,9 +38,9 @@ namespace house.Controllers
 
         public async Task<IActionResult> Products()
         {
-            var productdata = await _productServices.GetAllAsync();
+            //var productdata = await _productServices.GetAllAsync();
 
-            return View(productdata);
+            return View();
 
         }
         public async Task<IActionResult> Customers()

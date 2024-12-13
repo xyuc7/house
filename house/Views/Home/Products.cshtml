@@ -1,1 +1,173 @@
 ﻿
+
+<div id="app">
+    <h1>產品資料管理</h1>
+
+    <!-- 新增/編輯表單 -->
+    <div>
+        <h3>{{ isEditing ? "編輯產品" : "新增產品" }}</h3>
+        <form v-on:submit.prevent="isEditing ? updateProduct() : createProduct()">
+            <input type="text" v-model="productForm.ProductID" placeholder="ProductID" required />
+            <input type="text" v-model="productForm.ProductName" placeholder="ProductName" required />
+            <input type="text" v-model="productForm.SupplierID" placeholder="SupplierID" />
+            <input type="text" v-model="productForm.CategoryID" placeholder="CategoryID" />
+            <input type="text" v-model="productForm.QuantityPerUnit" placeholder="QuantityPerUnit" />
+            <input type="text" v-model="productForm.UnitPrice" placeholder="UnitPrice" />
+            <input type="text" v-model="productForm.UnitsInStock" placeholder="UnitsInStock" />
+            <input type="text" v-model="productForm.UnitsOnOrder" placeholder="UnitsOnOrder" />
+            <input type="text" v-model="productForm.ReorderLevel" placeholder="ReorderLevel" />
+            <input type="text" v-model="productForm.Discontinued" placeholder="Discontinued" />
+            <button type="submit">{{ isEditing ? "更新" : "新增" }}</button>
+        </form>
+        <div v-if="errorMessage" style="color: red;">{{ errorMessage }}</div>
+    </div>
+
+    <!-- 列表 -->
+    <div>
+        <h3>客戶列表</h3>
+        <ul>
+            <li v-for="product in products" :key="product.productId">
+                <div>
+                    <strong>{{ product.ProductID }}</strong> - {{ product.ProductName }}
+                </div>
+                <div>SupplierID: {{ product.SupplierID }},CategoryID: {{ product.CategoryID }}, QuantityPerUnit: {{ product.QuantityPerUnit }}</div>
+                <div>UnitPrice: {{ product.UnitPrice }}, UnitsInStock: {{ product.UnitsInStock }}</div>
+                <div>UnitsOnOrder: {{ product.UnitsOnOrder }}, ReorderLevel: {{ product.ReorderLevel }}</div>
+                <div>Discontinued: {{ product.Discontinued }}</div>
+                <button v-on:click="editProduct(product)">編輯</button>
+                <button v-on:click="deleteProduct(product.productId)">刪除</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3.3.4/dist/vue.global.js"></script>
+<script>
+    const { ref, reactive, onMounted } = Vue;
+
+    const app = Vue.createApp({
+        setup() {
+            const products = ref([]); // Product列表
+            const productForm = reactive({
+               
+                productId: null,// 唯一識別碼，不可編輯
+                productName: "",
+                supplierID: "",
+                categoryID: "",
+                quantityPerUnit: "",
+                unitPrice: "",
+                unitsInStock: "",
+                unitsOnOrder: "",
+                reorderLevel: "",
+                discontinued: "",
+
+            });
+            const isEditing = ref(false); // 是否正在編輯
+            const errorMessage = ref(""); // 錯誤訊息
+
+            // 獲取所有Product
+            const fetchProducts = async () => {
+                try {
+                    const res = await fetch("api/Product");
+                    if (!res.ok) throw new Error("無法獲取資料");
+                    products.value = await res.json();
+                } catch (err) {
+                    errorMessage.value = err.message;
+                    console.error("Fetch Product Error:", err);
+                }
+            };
+
+            // 新增Product
+            const createProduct = async () => {
+                try {
+                    await fetch("api/Product", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            ...productForm,
+                            productId: undefined, // 新增時移除 ID
+                        }),
+                    });
+                    await fetchProducts();
+                    resetForm();
+                } catch (err) {
+                    errorMessage.value = err.message;
+                    console.error("Create Product Error:", err);
+                }
+            };
+
+            // 編輯Product
+            const editProduct = (product) => {
+                Object.assign(productForm, product);
+                isEditing.value = true;
+                errorMessage.value = "";
+            };
+
+            // 更新Product
+            const updateProduct = async () => {
+                try {
+                    await fetch("api/Product", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(productForm),
+                    });
+                    await fetchProducts();
+                    resetForm();
+                } catch (err) {
+                    errorMessage.value = err.message;
+                    console.error("Update Product Error:", err);
+                }
+            };
+
+            // 刪除Product
+            const deleteProduct = async (productId) => {
+                try {
+                    await fetch(`api/Product/${productId}`, {
+                        method: "DELETE",
+                    });
+                    await fetchProducts();
+                } catch (err) {
+                    errorMessage.value = err.message;
+                    console.error("Delete Product Error:", err);
+                }
+            };
+
+            // 重置表單
+            const resetForm = () => {
+                Object.assign(productForm, {
+                    productId: null,
+                    productName: "",
+                    supplierID: "",
+                    categoryID: "",
+                    quantityPerUnit: "",
+                    unitPrice: "",
+                    unitsInStock: "",
+                    unitsOnOrder: "",
+                    reorderLevel: "",
+                    discontinued: "",
+                });
+                isEditing.value = false;
+                errorMessage.value = "";
+            };
+
+            onMounted(() => {
+                fetchProducts();
+            });
+
+            return {
+                products,
+                productForm,
+                isEditing,
+                errorMessage,
+                fetchProducts,
+                createProduct,
+                editProduct,
+                updateProduct,
+                deleteProduct,
+                resetForm,
+            };
+        },
+    });
+
+    app.mount("#app");
+</script>

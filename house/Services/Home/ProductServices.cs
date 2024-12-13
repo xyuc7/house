@@ -58,9 +58,19 @@ namespace house.Services.Home
             return new OkResult();
         }
 
-        public Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var product = await _productRepository.SingleOrDefaultAsync(p => p.ProductId == id);
+            if (product != null)
+            {
+
+                // 刪除Product
+                await _productRepository.DeleteAsync(product);
+
+                //await _productRepository.SaveChangesAsync;
+            }
+
+            return new NoContentResult();
         }
 
         public async Task<ActionResult<ProductVM>>GetByIdAsync(int id)
